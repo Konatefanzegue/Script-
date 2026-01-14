@@ -1,8 +1,8 @@
-name: New docker image
+name: New docker image new
 
 on:
   push:
-    branch:
+    branches:
       - 'main'
 
 jobs:
@@ -25,5 +25,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: ./source
+          file: ./source/Dockerfile
           push: true
           tags: user/calc:1.0.0 {{ github.run_number  }}
